@@ -37,7 +37,7 @@ Martin Bohring 2017
 #### The 2000's approach ####
 
 - This time we do better
-- Let´s use human readable XML for everthing and let´s stay programming language agnostic
+- Let´s stay programming language agnostic
 - Lets´s get rid of IDL
 - Let's be Internet ready and build on HTML and XML
 - So SOAP (Simple Object Access Protocol) was invented
@@ -48,6 +48,7 @@ Martin Bohring 2017
   - A way to relate calls to each other was invented (WS-Adressing)
   - A way to deliver events was needed (WS-Eventing)
   - Service address hardcoding was a pain, so service discovery was created (WS-Discovery)
+  - Code generators to deal with the built up complexity where created
 
 **Result:** Distributed developer hell (XML edition)
 
