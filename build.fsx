@@ -14,7 +14,7 @@
 let gitOwner = "Martin-Bohring"
 let gitHome = "https://github.com/" + gitOwner
 // The name of the project on GitHub
-let gitProjectName = "PowerfulTestingStrategies"
+let gitProjectName = "MicroServices"
 
 let gitSubDir = ""
 
