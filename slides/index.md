@@ -60,7 +60,7 @@ on distributed systems and programming styles
 - But that was not sufficient or enterprice ready
 
   - So a description language (*WSDL*) was invented
-  - A way to relate calls to each other was invented (*WS-Adressing*)
+  - A way to relate calls to each other was invented (*WS-Addressing*)
   - A way to deliver events was needed (*WS-Eventing*)
   - Service address hardcoding was a pain, so service discovery was created (*WS-Discovery*)
   
@@ -76,7 +76,7 @@ on distributed systems and programming styles
 - *XML* is to heavyweight, so let's use *JSON* instead and keep *HTTP*
 - Let's leverage the Internet architecture and use *POST* for writes and *Get* for reads
 - Lets base architecture and communication on hypermedia (*HATEOAS*)
-- Lets not be statefull within our services but let the client transfer the state.
+- Lets not be statefull within our services, but let the client transfer the state.
 - So *REST* as an architecture style was invented.
 
 ***
