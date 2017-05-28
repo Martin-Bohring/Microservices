@@ -55,43 +55,82 @@
 </section>
 <section id="history">
 <h3>A little bit of history</h3>
+<p>on distributed systems and programming styles</p>
 </section>
-<section id="history90">
+<section id="history90Approach">
 <h4>The 90's approach</h4>
 <ul>
-<li>Heavyweight RPC based systems based on IDL (Interface Desciption Language) lifted from the 80´s</li>
-<li>
-<p>Heavyweight distributed object systems like CORBA and DCOM and others also based on IDL dialects</p>
+<li>Heavyweight <em>RPC</em> based systems based on <em>IDL</em> (Interface Desciption Language) lifted from the 80´s</li>
+<li>Heavyweight distributed object systems like <em>CORBA</em> and <em>DCOM</em> and others also based on <em>IDL</em> dialects</li>
+<li>Code generation based on <em>IDL</em></li>
+</ul>
+</section>
+<section id="history90Outcome">
+<h4>The 90's outcome</h4>
 <ul>
-<li>leading to strong coupling</li>
-<li>leading to vendor lock in</li>
-<li>and big up front costs</li>
-<li>and a lot of coordination between teams and companies</li>
+<li>
+<p>The code generation caused the following:</p>
+<ul>
+<li>Strong coupling betwen services and clients</li>
+<li>Vendor lock in through libraries and runtimes</li>
+<li>Big up front costs and slow rollouts</li>
+<li>A lot of coordination between teams and companies</li>
 </ul>
 </li>
 </ul>
 <p><strong>Result:</strong> Distributed developer hell</p>
 </section>
-<section id="history2000">
+<section id="history2000Approach">
 <h4>The 2000's approach</h4>
 <ul>
 <li>This time we do better</li>
 <li>Let´s stay programming language agnostic</li>
-<li>Lets´s get rid of IDL</li>
-<li>Let's be Internet ready and build on HTML and XML</li>
-<li>So SOAP (Simple Object Access Protocol) was invented</li>
-<li>
-<p>but that was not sufficient or enterprice ready</p>
+<li>Lets´s get rid of <em>IDL</em></li>
+<li>Let's be Internet ready and build on <em>HTTP</em> and <em>XML</em></li>
+<li>So <em>SOAP</em> (Simple Object Access Protocol) was invented and used <em>POST</em> for calls and reads</li>
+</ul>
+</section>
+<section id="history2000Outcome">
+<h4>The 2000's outcome</h4>
 <ul>
-<li>so a description language (WSDL) was invented</li>
-<li>A way to relate calls to each other was invented (WS-Adressing)</li>
-<li>A way to deliver events was needed (WS-Eventing)</li>
-<li>Service address hardcoding was a pain, so service discovery was created (WS-Discovery)</li>
-<li>Code generators to deal with the built up complexity where created</li>
+<li>
+<p>But that was not sufficient or enterprice ready</p>
+<ul>
+<li><p>So a description language (<em>WSDL</em>) was invented</p></li>
+<li><p>A way to relate calls to each other was invented (<em>WS-Adressing</em>)</p></li>
+<li><p>A way to deliver events was needed (<em>WS-Eventing</em>)</p></li>
+<li><p>Service address hardcoding was a pain, so service discovery was created (<em>WS-Discovery</em>)</p></li>
 </ul>
 </li>
 </ul>
 <p><strong>Result:</strong> Distributed developer hell (XML edition)</p>
+</section>
+<section id="history2010Approach">
+<h4>The 2010's approach</h4>
+<ul>
+<li>They got it all wrong in the past</li>
+<li>We need loose coupling and not <em>RPC</em> style communication</li>
+<li><em>XML</em> is to heavyweight, so let's use <em>JSON</em> instead and keep <em>HTTP</em></li>
+<li>Let's leverage the Internet architecture and use <em>POST</em> for writes and <em>Get</em> for reads</li>
+<li>Lets base architecture and communication on hypermedia (<em>HATEOAS</em>)</li>
+<li>Lets not be statefull within our services but let the client transfer the state.</li>
+<li>So <em>REST</em> as an architecture style was invented.</li>
+</ul>
+</section>
+<section id="history2010Outcome">
+<h4>The 2010's outcome</h4>
+<ul>
+<li>
+<p>It started lean and mean, but some well known patterns showed up</p>
+<ul>
+<li><p>We need events and subscriptions and so <em>WebSocket</em> was invented</p></li>
+<li><p>A formal <em>API</em> description was needed and so <em>Swagger</em> and <em>RAML</em> where invented</p></li>
+<li><p><em>POST</em> vs <em>PUT</em> vs <em>PATCH</em> wars arose, so rules when to use what had to be established</p></li>
+<li><p>We need to secure our <em>API</em>, so <em>JWT</em>, <em>OAuth</em>, <em>OAuth2</em> and other token based approaches where invented</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Result:</strong> Distributed developer hell (JSON edition)</p>
 </section>
 
 
