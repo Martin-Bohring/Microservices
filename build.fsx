@@ -9,11 +9,13 @@
 
 // Git configuration (used for publishing documentation in gh-pages branch)
 // The profile where the project is posted
-let gitOwner = "myGitUser"
+// Git configuration (used for publishing documentation in gh-pages branch)
+// The profile where the project is posted
+let gitOwner = "Martin-Bohring"
 let gitHome = "https://github.com/" + gitOwner
 // The name of the project on GitHub
-let gitProjectName = "MyProject"
-// The name of the GitHub repo subdirectory to publish slides to
+let gitProjectName = "PowerfulTestingStrategies"
+
 let gitSubDir = ""
 
 open FsReveal
