@@ -7,16 +7,31 @@
 ***
 - id : title
 
-### Oportunities and challenges implementing Microservice Architectures ###
+### Oportunities and challenges implementing distributed Architectures ###
 
 Martin Bohring 2017
 
 ***
+- id : intro
+
+#### Every distributed system architecture has to answer the following questions ####
+
+- How are commands executed?
+- How to perform queries?
+- How to publish events?
+
+
+#### And in addition ####
+
+- Do we need to scale?
+- How do we scale?
+
+***
 - id : history
 
-### A little bit of history ###
+#### A little bit of history ####
 
-on distributed systems and programming styles
+on answers to those problems in the past
 
 ***
 - id : history90Approach
@@ -38,6 +53,7 @@ on distributed systems and programming styles
   - Vendor lock in through libraries and runtimes
   - Big up front costs and slow rollouts
   - A lot of coordination between teams and companies
+  - Asynchronous handling only an afterthought
 
 **Result:** Distributed developer hell
 
@@ -50,19 +66,20 @@ on distributed systems and programming styles
 - Let´s stay programming language agnostic
 - Lets´s get rid of *IDL*
 - Let's be Internet ready and build on *HTTP* and *XML*
-- So *SOAP* (Simple Object Access Protocol) was invented and used *POST* for calls and reads
+- So *SOAP* (Simple Object Access Protocol) was invented and used *POST* for commands and queries
 
 ***
 - id : history2000Outcome
 
 #### The 2000's outcome ####
 
-- But that was not sufficient or enterprice ready
+- But that was not sufficient and not *enterprice ready*
 
   - So a description language (*WSDL*) was invented
   - A way to relate calls to each other was invented (*WS-Addressing*)
   - A way to deliver events was needed (*WS-Eventing*)
   - Service address hardcoding was a pain, so service discovery was created (*WS-Discovery*)
+  - The support of those standards was marginal to good depending on the programming ecosystem
   
 **Result:** Distributed developer hell (XML edition)
 
@@ -74,9 +91,9 @@ on distributed systems and programming styles
 - They got it all wrong in the past
 - We need loose coupling and not *RPC* style communication
 - *XML* is to heavyweight, so let's use *JSON* instead and keep *HTTP*
-- Let's leverage the Internet architecture and use *POST* for writes and *Get* for reads
-- Lets base architecture and communication on hypermedia (*HATEOAS*)
-- Lets not be statefull within our services, but let the client transfer the state.
+- Let's leverage the Internet architecture and use *POST* for commands and *Get* for queries
+- Let's base architecture and communication on hypermedia (*HATEOAS*)
+- Let's not be statefull within our services, but let the client transfer the state.
 - So *REST* as an architecture style was invented.
 
 ***
