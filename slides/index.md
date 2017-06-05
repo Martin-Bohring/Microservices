@@ -1,17 +1,21 @@
-- title : Microservices
-- description : Oportunities and challenges implementing Microservice Architectures
+- title : Distributed Architectures
+- description : Oportunities and challenges implementing distributed architectures
 - author : Martin Bohring
 - theme : night
 - transition : default
 
 ***
+
 - id : title
 
-### Oportunities and challenges implementing distributed Architectures ###
+### Oportunities and challenges implementing distributed architectures ###
 
-Martin Bohring 2017
+Martin Bohring
+<br />
+2017
 
 ***
+
 - id : intro
 
 #### Every distributed system architecture has to answer the following questions ####
@@ -20,6 +24,8 @@ Martin Bohring 2017
 - How to perform queries?
 - How to publish events?
 
+<br />
+<br />
 
 #### And in addition ####
 
@@ -27,6 +33,7 @@ Martin Bohring 2017
 - How do we scale?
 
 ***
+
 - id : history
 
 #### A little bit of history ####
@@ -34,6 +41,7 @@ Martin Bohring 2017
 on answers to those problems in the past
 
 ***
+
 - id : history90Approach
 
 #### The 90's approach ####
@@ -43,6 +51,7 @@ on answers to those problems in the past
 - Code generation based on *IDL*
 
 ***
+
 - id : history90Outcome
 
 #### The 90's outcome ####
@@ -58,6 +67,7 @@ on answers to those problems in the past
 **Result:** Distributed developer hell
 
 ***
+
 - id : history2000Approach
 
 #### The 2000's approach ####
@@ -69,21 +79,23 @@ on answers to those problems in the past
 - So *SOAP* (Simple Object Access Protocol) was invented and used *POST* for commands and queries
 
 ***
+
 - id : history2000Outcome
 
 #### The 2000's outcome ####
 
-- But that was not sufficient and not *enterprice ready*
+- But that was not sufficient and not *enterprise ready*
 
   - So a description language (*WSDL*) was invented
   - A way to relate calls to each other was invented (*WS-Addressing*)
   - A way to deliver events was needed (*WS-Eventing*)
   - Service address hardcoding was a pain, so service discovery was created (*WS-Discovery*)
   - The support of those standards was marginal to good depending on the programming ecosystem
-  
+
 **Result:** Distributed developer hell (XML edition)
 
 ***
+
 - id : history2010Approach
 
 #### The 2010's approach ####
@@ -97,6 +109,7 @@ on answers to those problems in the past
 - So *REST* as an architecture style was invented.
 
 ***
+
 - id : history2010Outcome
 
 #### The 2010's outcome ####
@@ -107,7 +120,7 @@ on answers to those problems in the past
   - A formal *API* description was needed and so *Swagger* and *RAML* where invented
   - *POST* vs *PUT* vs *PATCH* wars arose, so rules when to use what had to be established
   - We need to secure our *API*, so *JWT*, *OAuth*, *OAuth2* and other token based approaches where invented
-  
+
 **Result:** Distributed developer hell (JSON edition)
 
 ***
