@@ -16,7 +16,7 @@ Martin Bohring
 
 ***
 
-- id : intro
+- id : intro1
 
 #### Every distributed system architecture has to answer the following questions ####
 
@@ -24,13 +24,21 @@ Martin Bohring
 - How to perform queries?
 - How to publish events?
 
-<br />
-<br />
+***
+
+- id : intro2
 
 #### And in addition ####
 
 - Do we need to scale?
 - How do we scale?
+- Is a *CRUD* (Create, Read, Update, Delete) approach sufficient?
+- How to deal with flaky connections?
+- How to deal with latency?
+- How to handle idempotency?
+- How to address asynchronity?
+- Do we need to handle security on all endpoints?
+- ...
 
 ***
 
@@ -38,7 +46,7 @@ Martin Bohring
 
 #### A little bit of history ####
 
-on answers to those problems in the past
+on past approaches to answer those questions over the last 3 decades
 
 ***
 
@@ -47,7 +55,7 @@ on answers to those problems in the past
 #### The 90's approach ####
 
 - Heavyweight *RPC* based systems based on *IDL* (Interface Desciption Language) lifted from the 80´s
-- Heavyweight distributed object systems like *CORBA* and *DCOM* and others also based on *IDL* dialects
+- Distributed object systems like *CORBA* and *DCOM* and others also based on *IDL* dialects
 - Code generation based on *IDL*
 
 ***
@@ -56,13 +64,12 @@ on answers to those problems in the past
 
 #### The 90's outcome ####
 
-- The code generation caused the following:
-
-  - Strong coupling betwen services and clients
-  - Vendor lock in through libraries and runtimes
-  - Big up front costs and slow rollouts
-  - A lot of coordination between teams and companies
-  - Asynchronous handling only an afterthought
+- Strong coupling betwen services and clients
+- Vendor lock in through libraries and runtimes
+- Big up front costs and slow rollouts
+- A lot of coordination between teams and companies
+- Asynchronous handling was only an afterthought
+- Chatty message exchanges that broke down on network outages
 
 **Result:** Distributed developer hell
 
@@ -73,8 +80,8 @@ on answers to those problems in the past
 #### The 2000's approach ####
 
 - This time we do better
-- Let´s stay programming language agnostic
-- Lets´s get rid of *IDL*
+- Let's stay programming language agnostic
+- Let's get rid of *IDL*
 - Let's be Internet ready and build on *HTTP* and *XML*
 - So *SOAP* (Simple Object Access Protocol) was invented and used *POST* for commands and queries
 
@@ -84,13 +91,12 @@ on answers to those problems in the past
 
 #### The 2000's outcome ####
 
-- But that was not sufficient and not *enterprise ready*
-
-  - So a description language (*WSDL*) was invented
-  - A way to relate calls to each other was invented (*WS-Addressing*)
-  - A way to deliver events was needed (*WS-Eventing*)
-  - Service address hardcoding was a pain, so service discovery was created (*WS-Discovery*)
-  - The support of those standards was marginal to good depending on the programming ecosystem
+- A description language (*WSDL*) was needed
+- A way to relate calls to each other was invented (*WS-Addressing*)
+- A way to deliver events was needed (*WS-Eventing*)
+- Service address hardcoding was a pain, so service discovery was created (*WS-Discovery*)
+- Endpoint and message security was required, so another standard was created ("*WS-Security*")
+- The support of that standard family (*WS-..*) was different depending on the programming ecosystem of choice
 
 **Result:** Distributed developer hell (XML edition)
 
@@ -103,10 +109,10 @@ on answers to those problems in the past
 - They got it all wrong in the past
 - We need loose coupling and not *RPC* style communication
 - *XML* is to heavyweight, so let's use *JSON* instead and keep *HTTP*
-- Let's leverage the Internet architecture and use *POST* for commands and *Get* for queries
+- Let's leverage the Internet architecture and use *POST* for commands and *Get* for queries and *PUT* for updates
 - Let's base architecture and communication on hypermedia (*HATEOAS*)
 - Let's not be statefull within our services, but let the client transfer the state.
-- So *REST* as an architecture style was invented.
+- So *REST* as an architecture style was born (<http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm>).
 
 ***
 
@@ -114,12 +120,12 @@ on answers to those problems in the past
 
 #### The 2010's outcome ####
 
-- It started lean and mean, but some well known patterns showed up
+It all started lean and mean, but then some well known patterns showed up
 
-  - We need events and subscriptions and so *WebSocket* was invented
-  - A formal *API* description was needed and so *Swagger* and *RAML* where invented
-  - *POST* vs *PUT* vs *PATCH* wars arose, so rules when to use what had to be established
-  - We need to secure our *API*, so *JWT*, *OAuth*, *OAuth2* and other token based approaches where invented
+- We need events and subscriptions and so *WebSocket* was invented
+- A formal *API* description was needed and so *Swagger* and *RAML* where created
+- *POST* vs *PUT* vs *PATCH* wars arose, so rules when to use what had to be established
+- We need to secure our *API*, so *JWT*, *OAuth*, *OAuth2* and other token based approaches where invented
 
 **Result:** Distributed developer hell (JSON edition)
 
