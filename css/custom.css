@@ -1,0 +1,26 @@
+body {
+  background: #1C344C;
+  background-color: #1C344C;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3, 
+.reveal h4 {
+    color: #C6E070;
+}
+
+body {
+    color: #F2F2F2;
+}
+
+.reveal em {
+    color: #91C46C;
+}
+
+.reveal strong {
+    color: #91C46C;
+}
+
+
+
