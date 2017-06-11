@@ -55,30 +55,37 @@
 <br />
 2017</p>
 </section>
-<section id="intro">
+<section id="intro1">
 <h4>Every distributed system architecture has to answer the following questions</h4>
 <ul>
 <li>How are commands executed?</li>
 <li>How to perform queries?</li>
 <li>How to publish events?</li>
 </ul>
-<br />
-<br />
+</section>
+<section id="intro2">
 <h4>And in addition</h4>
 <ul>
 <li>Do we need to scale?</li>
 <li>How do we scale?</li>
+<li>Is a <em>CRUD</em> (Create, Read, Update, Delete) approach sufficient?</li>
+<li>How to deal with flaky connections?</li>
+<li>How to deal with latency?</li>
+<li>How to handle idempotency?</li>
+<li>How to address asynchronity?</li>
+<li>Do we need to handle security on all endpoints?</li>
+<li>...</li>
 </ul>
 </section>
 <section id="history">
 <h4>A little bit of history</h4>
-<p>on answers to those problems in the past</p>
+<p>on past approaches to answer those questions over the last 3 decades</p>
 </section>
 <section id="history90Approach">
 <h4>The 90's approach</h4>
 <ul>
 <li>Heavyweight <em>RPC</em> based systems based on <em>IDL</em> (Interface Desciption Language) lifted from the 80´s</li>
-<li>Heavyweight distributed object systems like <em>CORBA</em> and <em>DCOM</em> and others also based on <em>IDL</em> dialects</li>
+<li>Distributed object systems like <em>CORBA</em> and <em>DCOM</em> and others also based on <em>IDL</em> dialects</li>
 <li>Code generation based on <em>IDL</em></li>
 </ul>
 </section>
@@ -89,7 +96,8 @@
 <li>Vendor lock in through libraries and runtimes</li>
 <li>Big up front costs and slow rollouts</li>
 <li>A lot of coordination between teams and companies</li>
-<li>Asynchronous handling only an afterthought</li>
+<li>Asynchronous handling was only an afterthought</li>
+<li>Chatty message exchanges that broke down on network outages</li>
 </ul>
 <p><strong>Result:</strong> Distributed developer hell</p>
 </section>
@@ -97,8 +105,8 @@
 <h4>The 2000's approach</h4>
 <ul>
 <li>This time we do better</li>
-<li>Let´s stay programming language agnostic</li>
-<li>Lets´s get rid of <em>IDL</em></li>
+<li>Let's stay programming language agnostic</li>
+<li>Let's get rid of <em>IDL</em></li>
 <li>Let's be Internet ready and build on <em>HTTP</em> and <em>XML</em></li>
 <li>So <em>SOAP</em> (Simple Object Access Protocol) was invented and used <em>POST</em> for commands and queries</li>
 </ul>
@@ -106,11 +114,12 @@
 <section id="history2000Outcome">
 <h4>The 2000's outcome</h4>
 <ul>
-<li>A description language (<em>WSDL</em>) was invented</li>
+<li>A description language (<em>WSDL</em>) was needed</li>
 <li>A way to relate calls to each other was invented (<em>WS-Addressing</em>)</li>
 <li>A way to deliver events was needed (<em>WS-Eventing</em>)</li>
 <li>Service address hardcoding was a pain, so service discovery was created (<em>WS-Discovery</em>)</li>
-<li>The support of those standards was marginal to good depending on the programming ecosystem</li>
+<li>Endpoint and message security was required, so a security standard was created ("<em>WS-Security</em>")</li>
+<li>The support of that standard family (<em>WS-..</em>) was different depending on the programming ecosystem of choice</li>
 </ul>
 <p><strong>Result:</strong> Distributed developer hell (XML edition)</p>
 </section>
@@ -120,22 +129,32 @@
 <li>They got it all wrong in the past</li>
 <li>We need loose coupling and not <em>RPC</em> style communication</li>
 <li><em>XML</em> is to heavyweight, so let's use <em>JSON</em> instead and keep <em>HTTP</em></li>
-<li>Let's leverage the Internet architecture and use <em>POST</em> for commands and <em>Get</em> for queries</li>
+<li>Let's leverage the Internet architecture and use <em>POST</em> for commands and <em>Get</em> for queries and <em>PUT</em> for updates</li>
 <li>Let's base architecture and communication on hypermedia (<em>HATEOAS</em>)</li>
 <li>Let's not be statefull within our services, but let the client transfer the state.</li>
-<li>So <em>REST</em> as an architecture style was invented.</li>
+<li>So <em>REST</em> as an architecture style was born (<a href="http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm">http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm</a>).</li>
 </ul>
 </section>
 <section id="history2010Outcome">
 <h4>The 2010's outcome</h4>
-<p>It started lean and mean, but some well known patterns showed up</p>
+<p>It all started lean and mean, but then some well known patterns showed up</p>
 <ul>
 <li>We need events and subscriptions and so <em>WebSocket</em> was invented</li>
-<li>A formal <em>API</em> description was needed and so <em>Swagger</em> and <em>RAML</em> where invented</li>
+<li>A formal <em>API</em> description was needed and so <em>Swagger</em> and <em>RAML</em> where created</li>
 <li><em>POST</em> vs <em>PUT</em> vs <em>PATCH</em> wars arose, so rules when to use what had to be established</li>
-<li>We need to secure our <em>API</em>, so <em>JWT</em>, <em>OAuth</em>, <em>OAuth2</em> and other token based approaches where invented</li>
+<li>We need to secure our <em>API</em>'s, so <em>JWT</em>, <em>OAuth</em>, <em>OAuth2</em> and other token based approaches where invented</li>
 </ul>
 <p><strong>Result:</strong> Distributed developer hell (JSON edition)</p>
+</section>
+<section id="breakcycle">
+<h4>Can we break that cycle?</h4>
+<ul>
+<li>Maybe we should not attempt to address all <em>concerns</em> with one <em>approach</em></li>
+<li>Organisational <em>boundaries</em> play a bigger role than we thought they should</li>
+<li>Different system <em>contexts</em> drive which approaches are feasible</li>
+<li>Different parts of systems <em>evolve</em> with different <em>speed</em></li>
+<li>There is no <em>right</em> solution for <em>everybody</em></li>
+</ul>
 </section>
 
 
