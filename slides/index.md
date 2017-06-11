@@ -95,7 +95,7 @@ on past approaches to answer those questions over the last 3 decades
 - A way to relate calls to each other was invented (*WS-Addressing*)
 - A way to deliver events was needed (*WS-Eventing*)
 - Service address hardcoding was a pain, so service discovery was created (*WS-Discovery*)
-- Endpoint and message security was required, so another standard was created ("*WS-Security*")
+- Endpoint and message security was required, so a security standard was created ("*WS-Security*")
 - The support of that standard family (*WS-..*) was different depending on the programming ecosystem of choice
 
 **Result:** Distributed developer hell (XML edition)
@@ -125,8 +125,20 @@ It all started lean and mean, but then some well known patterns showed up
 - We need events and subscriptions and so *WebSocket* was invented
 - A formal *API* description was needed and so *Swagger* and *RAML* where created
 - *POST* vs *PUT* vs *PATCH* wars arose, so rules when to use what had to be established
-- We need to secure our *API*, so *JWT*, *OAuth*, *OAuth2* and other token based approaches where invented
+- We need to secure our *API*'s, so *JWT*, *OAuth*, *OAuth2* and other token based approaches where invented
 
 **Result:** Distributed developer hell (JSON edition)
+
+***
+
+- id : breakcycle
+
+#### Can we break that cycle? ####
+
+- Maybe we should not attempt to address all *concerns* with one *approach*
+- Organisational *boundaries* play a bigger role than we thought they should
+- Different system *contexts* drive which approaches are feasible
+- Different parts of systems *evolve* with different *speed*
+- There is no *right* solution for *everybody*
 
 ***
